@@ -1,0 +1,24 @@
+Installation des différents outils pour le projet
+
+I) Installation d'Ocropus (traitement des images)
+
+hg clone -r ocropus-0.7 https://code.google.com/p/ocropus
+cd ocropus/ocropy
+sudo apt-get install $(cat PACKAGES)
+python setup.py download_models
+sudo python setup.py install
+./run-test
+
+II) Installation de CLD2 (traitement de la langue)
+
+cd tmp/
+svn checkout http://cld2.googlecode.com/svn/trunk/ cld2
+cd cld2/internal
+copier le fichier compile_libs_32bit.sh fourni dans le repertoire internal
+chmod u+x compile_libs_32bit.sh
+./compile_libs_32bit.sh
+effectuer le test suivant dans votre terminal : echo "Hello World こんにちは γει? σου" | cld2
+
+III) Installation de lynx (convertion html/txt)
+
+sudo apt-get install lynx
