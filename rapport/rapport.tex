@@ -1,0 +1,73 @@
+\documentclass[12pt,titlepage,a4paper]{report}
+% Texte
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{minted}
+% Pour les checkmarks
+\usepackage{pifont}
+\usepackage{amssymb}
+% Pour des \hline en gras
+\usepackage{makecell}
+% Numéroter les chapitres à partir de chaque début de partie
+\makeatletter\@addtoreset{chapter}{part}\makeatother
+
+% Mise en page
+\usepackage{url}
+\usepackage[top=2.1cm,bottom=2cm,left=1cm,right=1cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=false,
+    pdfborder={0 0 0},
+}
+\usepackage{multirow}
+
+% TOC
+\usepackage[french]{minitoc}
+\setcounter{tocdepth}{2}
+\setcounter{minitocdepth}{2}
+\setlength{\mtcindent}{0pt}
+
+% Images
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+% Pour inclure des pages PDF
+\usepackage[final]{pdfpages}
+
+% Couverture
+\usepackage{templateINSA}
+\initINSA
+
+\title{Reconnaissance de caractères et detection de langue}
+\author{Manon \bsc{Ansart}\\ Anthony \bsc{Courtin}}
+
+\renewcommand\soustitre{Rapport de projet}
+\renewcommand\infoBig{Projet d'Approfondissement et d'Ouverture}
+\renewcommand\infoSmall{ASI4 2014-2015}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\hlineGras}{\Xhline{2\arrayrulewidth}}
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+\begin{document}
+	\titleINSA{15}{images/fond.jpeg}{0}{0}{300}{\href{http://img0.gtsstatic.com/wallpapers/92e875b279aa0e52dc1b5cc12443416a_large.jpeg}{\textcolor{white}{CC - Istockphotos}}}
+
+	\dominitoc
+	\tableofcontents
+
+	\chapter{Introduction}
+		\input{textes/introduction}
+
+	\chapter{Compréhension des outils}
+		\section{Ocropus}
+		\input{textes/ocropus}
+
+		\section{Cld2}
+		\input{textes/cld2}
+
+\end{document}
