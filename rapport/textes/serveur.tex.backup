@@ -35,9 +35,6 @@ De plus il faut se trouver sur le réseau WEP-26 de l'INSA de Rouen pour pouvoir
 
 Il faut installer lynx qui permet de convertir une page html en fichier txt : \textit{sudo apt-get install lynx}.
 
-\subsection{PHP}
-Comme dit précedemment l'application envoie l'image au serveur par protocole Http directement sur un script php qui, lorsqu'il reçoit l'image, la copie dans le bon dossier et lance les différentes commandes nécessaire au traitement de l'image. Ce script est disponible dans l'archive fourni. Une fois que Ocropus a fini CLD2 est exécuté et renvoi une chaine de caractère transmise à l'application par protocole Http.
-
 \subsection{Problèmes rencontrés}
 
 Le premier problème que nous avons rencontrés avec le serveur vient d'Ocropus. En effet, lorsque celui-ci est exécuté, il ouvre une fenêtre graphique afin de traiter les images. Celle-ci n'est pas visible à l'écran mais empêche le bon fonctionnement d'Ocropus, d'où le -X dans la commande permettant de se connecter au serveur qui permet de se servir de notre écran comme écran miroir.\\
