@@ -1,7 +1,7 @@
 \subsection{Généralités}
-	CLD2, ou Compact Language Detection 2, est un package proposé par google pour detecter la langue d'un texte, fourni sous la forme d'une chaine ou d'une page HTML/XML. Comme son nom l'indique, il fait suite à CLD en y ajoutant plusieurs améliorations et des nouveautés, comme des langues supplémentaires (CLD2 peut en detecter 83 différentes, nous ne les listerons pas toutes ici) et la possibilité d'obtenir en sorti le texte correspondant aux 3 langues principales quand plusiquers langues sont detectées, pour pouvoir par exemple tout traduire dans une même langue.
+	CLD2, ou Compact Language Detection 2, est un package proposé par google \cite{googleCodeCLD2} pour detecter la langue d'un texte, fourni sous la forme d'une chaine ou d'une page HTML/XML. Comme son nom l'indique, il fait suite à CLD en y ajoutant plusieurs améliorations et des nouveautés, comme des langues supplémentaires (CLD2 peut en detecter 83 différentes, nous ne les listerons pas toutes ici) et la possibilité d'obtenir en sorti le texte correspondant aux 3 langues principales quand plusiquers langues sont detectées, pour pouvoir par exemple tout traduire dans une même langue.
 
-	CLD2 a été créé pour travailler sur des pages web comprenant plus de 200 caractères. De ce fait, des "indices", tels que des balises html concernant la langue ou le Top Level Domain de l'URL (.fr, .de ...) sont utilisés pour influcencer les résultats du package. Étant donné que nous n'utiliserons pas CLD2 sur des pages web mais sur des chaines de textes extraites pas Ocropus, ces indices ne seront pas utilisés dans notre cas.
+	CLD2 a été créé pour travailler sur des pages web comprenant plus de 200 caractères. De ce fait, des "indices", tels que des balises html concernant la langue ou le Top Level Domain de l'URL (.fr, .de ...) sont utilisés pour influcencer les résultats du package. Étant donné que nous n'utiliserons pas CLD2 sur des pages web mais sur des chaines de textes extraites par Ocropus, ces indices ne seront pas utilisés dans notre cas.
 
 \subsection{Nettoyage des données}
 	La première étape effectuée par CLD2 afin de travailler sur le texte et détecter la langue est de nettoyer le texte fourni pour pouvoir le traiter. 
@@ -21,5 +21,18 @@
 
 
 \subsection{Résultats}
+
+	\begin{itemize}
+		\item "Bonjour, vive notre PAO" : FRENCH(95\% 1291p)
+		\item "Nous sommes ravis de vous rencontrer." : FRENCH(97\% 885p)
+		\item "Hello, nice to mee you too" :  ENGLISH(96\% 1175p)
+		\item "Nous sommes ravis de vous rencontrer. Hello, nice to meet you too. " : Unknown(un-reliable). On constate que 2 phrases dans deux langues différentes qui sont bien detectées séparemment ne sont pas bien detectées lorsqu'elles sont ensemble.
+		\item "Nous sommes ravis de vous rencontrer. Visiblement il faut beaucoup plus de texte pour pouvoir detecter la langue. Hello, nice to meet you too." : FRENCH(99\% 633p)
+		\item "Nous sommes ravis de vous rencontrer. Visiblement il faut beaucoup plus de texte pour pouvoir detecter la langue. Hello, nice to meet you too. We need to put a little more text here too. Let's hope it works." : FRENCH(56\% 772p), ENGLISH(43\% 1314p). Il nous fout plus de texte dans chaque langue quand 2 langues sont mélangées.
+		\item "Il se rague roupète drâle emparouille endosque pratèle libucque barouffle ouillais tocarde marmine manage" : Unknown(un-reliable). En mettant des mots n'existant pas mais à sonorité française (extraits du poème Le Grand Combat d'Henri Michaux), on s'attendrait à ce que CLD2 trouve la langue français mais ce n'est pas le cas. CLD2 n'est pas si facile à berner !
+		\item "Essayons de trouver" : FRENCH(95\% 870p). 3 mots français peuvent suffire pour detecter la langue, ce qui est mieux que les 200 mots minimum prévus.
+		\item "esrdtu Essayons eghedu de eedef trouver kjhgvb jjkkl zzza" : FRENCH(98\% 300p). L'ajout de séquences de lettres aléatoires ne perturbent pas beaucoup CLD2
+		\item "Essayons de troujver" : Unknown(un-reliable). Le fait de modifier un mot perturbe en revanche beaucoup le résultat.
+	\end{itemize}
 
 	

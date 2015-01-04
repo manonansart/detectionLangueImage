@@ -7,6 +7,8 @@
 \usepackage{float}
 \usepackage{enumitem}
 \usepackage{minted}
+\usemintedstyle{trac}
+
 % Pour les checkmarks
 \usepackage{pifont}
 \usepackage{amssymb}
@@ -17,7 +19,7 @@
 
 % Mise en page
 \usepackage{url}
-\usepackage[top=2.1cm,bottom=2cm,left=1cm,right=1cm]{geometry}
+\usepackage[top=2.1cm,bottom=2cm,left=3cm,right=3cm]{geometry}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=false,
@@ -42,7 +44,20 @@
 \usepackage{templateINSA}
 \initINSA
 
-\title{Reconnaissance de caractères et detection de langue}
+% Citations
+\usepackage{epigraph}
+\setlength\epigraphwidth{12cm}
+\setlength\epigraphrule{0pt}
+
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+\makeatother
+
+\usepackage[nottoc, notlof, notlot]{tocbibind}
+
+\title{Reconnaissance de caractères et détection de langue}
 \author{Manon \bsc{Ansart}\\ Anthony \bsc{Courtin}}
 
 \renewcommand\soustitre{Rapport de projet}
@@ -65,19 +80,24 @@
 
 	\chapter{Compréhension des outils}
 		\section{Ocropus}
-		\input{textes/ocropus}
+			\input{textes/ocropus}
 
 		\section{Cld2}
-		\input{textes/cld2}
+			\input{textes/cld2}
 
 	\chapter{Conception de l'application}
 		\section{L'application Android}
-		\input{textes/android}
+			\input{textes/android}
 
 		\section{La communication avec le serveur}
-		\input{textes/serveur}
+			\input{textes/serveur}
 
 	\chapter{Conclusion}
 		\input{textes/conclusion}
+		\citation{}
+
+%% -- Bibliographie
+	\bibliographystyle{plain}
+	\bibliography{bib}
 
 \end{document}
