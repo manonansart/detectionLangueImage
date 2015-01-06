@@ -22,7 +22,3 @@ effectuer le test suivant dans votre terminal : echo "Hello World こんにち�
 III) Installation de lynx (convertion html/txt)
 
 sudo apt-get install lynx
-
-IV ) Installation application
-
-Pour installer l'application il suffit de la copier sur votre mobile et de l'exécuter. Il faut avoir au préalable activé l'installation d'application non certifiée.
