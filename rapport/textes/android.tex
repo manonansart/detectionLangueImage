@@ -12,6 +12,9 @@ la figure ci dessous présente le menu de démarrage de l'application :
 		\label{fig:image}
 	\end{figure}
 
+\subsection{Installation}
+Pour installer l'application sur mobile Android il suffit juste de copier ocroCLD2.apk sur le smartphone. Ensuite, activer l'installation d'applications non certifiées et installer l'application.
+
 \subsection{Fonctionnement}
 L'intégralité du code de l'application est disponible dans l'archive fournis.\\
 
@@ -20,6 +23,23 @@ Lorsque nous sommes dans le menu principal il nous suffit d'appuyer sur le bouto
 Une fois que nous avons pris la photo, il nous suffit de valider et nous retournons à l'accueil. L'application envoie alors grâce à notre classe DataSender l'image par protocole Http sur l'adresse du script php de notre serveur. Une fois cela fait, l'application reste à l'écoute du serveur afin de récupérer la chaine de caractère renvoyée. Cette chaine contient le résultat du traitement par Ocropus puis CLD2.\\
 
 Nous pouvons alors reprendre une photo ou bien quitter l'application.
+
+\subsection{Tests}
+Nous avons effectués quelques tests sur notre application dont voici l'un des résultats :
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.08]{images/testsImg.jpg}
+		\caption{Document en espagnol pris en photo}
+		\label{fig:image}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.2]{images/testRes.png}
+		\caption{Menu principal}
+		\label{fig:image}
+	\end{figure}
+Nous pouvons voir que l'image a bien été traitée par le serveur et que la langue renvoyée par CLD2 est la bonne.
 
 \subsection{Problèmes rencontrés}
 
