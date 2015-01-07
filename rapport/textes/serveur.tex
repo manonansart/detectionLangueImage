@@ -1,21 +1,21 @@
 \subsection{Connection au serveur}
 
-Afin d'installer et de faire nos tests nous nous connectons en ssh sur un serveur que Mr Sebastion Bonnegent nous a mit à disposition : \textit{ssh -X paoandroid@asi-android.insa-rouen.fr}.
-De plus il faut se trouver sur le réseau WEP-26 de l'INSA de Rouen pour pouvoir se connecter. Lorsque le PAO sera terminer le serveur sera fermé, il faudra donc redemander un serveur pour pouvoir reprendre le projet.
+Afin d'installer et de faire nos tests nous nous connectons en ssh sur un serveur que Mr Sebastion Bonnegent nous a mis à disposition : \textit{ssh -X paoandroid@asi-android.insa-rouen.fr}.
+De plus, il faut se trouver sur le réseau WEP-26 de l'INSA de Rouen pour pouvoir se connecter. Lorsque le PAO sera terminé, le serveur sera fermé, il faudra donc redemander un serveur pour pouvoir reprendre le projet.
 
 \subsection{Installation des outils}
 
 \subsubsection{Ocropus}
 
 \begin{itemize}
- \item Dans un premier temps il faut cloner le répertoire d'Ocropus à l'aide de la commande : \textit{hg clone -r ocropus-0.7 https://code.google.com/p/ocropus};
- \item Si cela ne fonctionne pas il faut installer le package que linux vous suggère;
- \item Ensuite déplacez vous dans le dossier ocropy : \textit{cd ocropus/ocropy};
- \item Installez les packages necessaires au fonctionnement : \textit{sudo apt-get install \$(cat PACKAGES)};
+ \item Dans un premier temps, il faut cloner le répertoire d'Ocropus à l'aide de la commande : \textit{hg clone -r ocropus-0.7 https://code.google.com/p/ocropus};
+ \item Si cela ne fonctionne pas, il faut installer le package que linux vous suggère;
+ \item Ensuite, déplacez vous dans le dossier ocropy : \textit{cd ocropus/ocropy};
+ \item Installez les packages nécessaires au fonctionnement : \textit{sudo apt-get install \$(cat PACKAGES)};
  \item Téléchargez les modèles python : \textit{python setup.py download\_models};
  \item Lancez l'installation : \textit{sudo python setup.py install};
  \item Lancez les tests : \textit{./run-test};
- \item Si tout est correctement installé vous devriez avoir un message d'Ocropus disant que vous pouvez visualiser les résultats en tapant une certaine ligne de commande.
+ \item Si tout est correctement installé, vous devriez avoir un message d'Ocropus disant que vous pouvez visualiser les résultats en tapant une certaine ligne de commande.
 \end{itemize}
 
 \subsubsection{CLD2}
@@ -28,7 +28,7 @@ De plus il faut se trouver sur le réseau WEP-26 de l'INSA de Rouen pour pouvoir
  \item Autorisez l'exécution de ce fichier : \textit{chmod u+x compile\_libs\_32bit.sh};
  \item Exécutez le fichier : \textit{./compile\_libs\_32bit.sh};
  \item Effectuez le test suivant dans votre terminal : \textit{echo "Hello World je suis gentil trop bien my name is i don't know" | cld2};
- \item Si tout est correctement installé votre terminal affichera un message vous diasnt que les texte est en anglais et français.
+ \item Si tout est correctement installé votre terminal affichera un message vous disant que le texte est en anglais et français.
 \end{itemize}
 
 \subsubsection{Lynx}
@@ -36,12 +36,12 @@ De plus il faut se trouver sur le réseau WEP-26 de l'INSA de Rouen pour pouvoir
 Il faut installer lynx qui permet de convertir une page html en fichier txt : \textit{sudo apt-get install lynx}.
 
 \subsection{PHP}
-Comme dit précedemment l'application envoie l'image au serveur par protocole Http directement sur un script php qui, lorsqu'il reçoit l'image, la copie dans le bon dossier et lance les différentes commandes nécessaire au traitement de l'image. Ce script est disponible dans l'archive fourni. Une fois que Ocropus a fini CLD2 est exécuté et renvoi une chaine de caractère transmise à l'application par protocole Http.
+Comme dit précédemment, l'application envoie l'image au serveur par protocole Http directement sur un script php qui, lorsqu'il reçoit l'image, la copie dans le bon dossier et lance les différentes commandes nécessaires au traitement de l'image. Ce script est disponible dans l'archive fournie. Une fois que Ocropus a fini CLD2 est exécuté et renvoie une chaîne de caractère transmise à l'application par protocole Http.
 
 \subsection{Problèmes rencontrés}
 
-Le premier problème que nous avons rencontrés avec le serveur vient d'Ocropus. En effet, lorsque celui-ci est exécuté, il ouvre une fenêtre graphique afin de traiter les images. Celle-ci n'est pas visible à l'écran mais empêche le bon fonctionnement d'Ocropus, d'où le -X dans la commande permettant de se connecter au serveur qui permet de se servir de notre écran comme écran miroir.\\
-Afin de résoudre ce problème nous avons modifier quelques lignes de code des bibliothèques d'Ocropus afin que celui-ci n'ouvre plus de fenêtre graphique pour exécuter le script bash directement grâce à une requête HTML et ne plus avoir de message d'erreur. Afin de savoir quel fichier modifer il faut se connecter au serveur sans le -X et executer Ocropus.\\
+Le premier problème que nous avons rencontré avec le serveur vient d'Ocropus. En effet, lorsque celui-ci est exécuté, il ouvre une fenêtre graphique afin de traiter les images. Celle-ci n'est pas visible à l'écran mais empêche le bon fonctionnement d'Ocropus, d'où le -X dans la commande permettant de se connecter au serveur qui permet de se servir de notre écran comme écran miroir.\\
+Afin de résoudre ce problème nous avons modifié quelques lignes de code des bibliothèques d'Ocropus afin que celui-ci n'ouvre plus de fenêtre graphique pour exécuter le script bash directement grâce à une requête HTML et ne plus avoir de message d'erreur. Afin de savoir quel fichier modifer, il faut se connecter au serveur sans le -X et exécuter Ocropus.\\
 Voici les trois lignes de code à rajouter au tout début du fichier :
 \begin{itemize}
  \item import matplotlib
@@ -50,5 +50,5 @@ Voici les trois lignes de code à rajouter au tout début du fichier :
 \end{itemize}
 Si le problème persiste après c'est que vous n'avez pas modifié le bon fichier python.\\
 
-Le deuxième problème fut les droits d'accès aux fichier. En effet, lorsque l'application android envoie la requête sur le script php du serveur, ce script est exécuté par Apache. Il faut donc que Apache possède les droits d'accès, de modification et d'exécution sur les dossiers d'Ocropus et tous ceux nécessaire au bon fonctionnement du script.\\
-Pour résoudre ce problème nous avons donnés les droits root à Apache ce qui ne constitue pas forcément la meilleure des solutions car très risquée. Néanmoins, vu que cette application est déstinée uniquement à être utilisée dans le cadre du PAO cela nous a semblé être la solution la plus simple et rapide.
+Le deuxième problème fut les droits d'accès aux fichiers. En effet, lorsque l'application android envoie la requête sur le script php du serveur, ce script est exécuté par Apache. Il faut donc que Apache possède les droits d'accès, de modification et d'exécution sur les dossiers d'Ocropus et tous ceux nécessaires au bon fonctionnement du script.\\
+Pour résoudre ce problème nous avons donnés les droits root à Apache ce qui ne constitue pas forcément la meilleure des solutions car très risquée. Néanmoins, vu que cette application est destinée uniquement à être utilisée dans le cadre du PAO, cela nous a semblé être la solution la plus simple et rapide.
